@@ -1,0 +1,74 @@
+<html>
+	<head>
+		 <link id="landing-css" href="../../themes/landing/css/style.css" rel="stylesheet">
+		 <script src="../../js/jquery.min.js"></script>
+		 <script src="../../js/bootstrap.min.js"></script>
+	</head>
+<body>
+	
+	<!-- #cookie-notice html code will be inserted in the themes pages by plugin common.tpl -->	
+	
+	<div id="cookie-notice">
+
+		<div class="fixed-bottom p-4">
+			
+			<div class="toast bg-opacity-50 w-25 mw-100 float-end" role="alert" data-autohide="false">
+					<div class="toast-body p-4 d-flex flex-column">
+						<h4>Cookie Notice</h4>
+						<p>This website stores data such as cookies to enable site functionality including analytics and personalization.<br>
+						By using this website, you automatically accept that we use cookies. 
+						Check our <a href="/page/privacy-policy">privacy policy</a>
+						</p>
+						<div class="ms-auto">
+							<button type="button" class="btn btn-outline-secondary me-3" id="btnDeny" data-bs-dismiss="toast" onclick="setCookieConsent('deny')">
+								Deny
+							</button>
+							<button type="button" class="btn btn-outline-primary" id="btnAccept" data-bs-dismiss="toast" onclick="setCookieConsent('allow')">
+								Accept
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>  
+
+	</div>
+	
+<!-- #cookie-notice-js code will be inserted in the theme pages by plugin common.tpl -->	
+<script id="cookie-notice-js">
+let notice = $("#cookie-notice .toast");
+if (localStorage) {
+
+	let cookie = localStorage.getItem("cookie-notice", "unset");
+
+	if (!cookie && notice.length) {
+		notice.addClass("show");
+	}
+}
+
+function setCookieConsent(value) {
+	return localStorage.setItem('cookie-notice', value);
+}
+</script>		
+
+<!-- this js code will not be inserted and will only load in editor -->
+<script>		
+function isEditor () {
+	return document.getElementById("vvvebjs-styles");
+}
+
+$(function() {
+	if (isEditor()) {
+		//if editor always show notice and don't hide on button click
+		$("#cookie-notice .toast").on("hide.bs.toast", function (e) {
+			e.stopPropagation();
+			return false;
+		});
+		notice.addClass("show");
+	}
+});
+</script>		
+</body>	
+</html>
+
+
+			
