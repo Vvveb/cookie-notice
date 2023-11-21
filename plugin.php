@@ -30,7 +30,7 @@ Author: givanz
 Version: 0.1
 Thumb: cookie-notice.svg
 Author url: https://www.vvveb.com
-Settings: /admin/?module=editor/editor&url=plugins/cookie-notice/notice.html&template=/plugins/cookie-notice/notice.html
+Settings: /admin/?module=editor/editor&url=/plugins/cookie-notice/notice.html&template=/plugins/cookie-notice/notice.html
 */
 
 use function Vvveb\__;
@@ -57,7 +57,7 @@ class CookieNoticePlugin {
 			];
 
 			return [$menu];
-		}, 20);
+		});
 	}
 
 	function app() {
