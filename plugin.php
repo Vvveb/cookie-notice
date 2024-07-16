@@ -47,7 +47,7 @@ class CookieNoticePlugin {
 		//add admin menu item
 		$admin_path = \Vvveb\adminPath();
 		$publicPath = \Vvveb\publicUrlPath();
-		$url        = url(['module' => 'editor/editor', 'url' => $publicPath . '/plugins/cookie-notice/notice.html', 'template' => '/plugins/cookie-notice/notice.html']);
+		$url        = url(['module' => 'editor/editor', 'url' => $publicPath . 'plugins/cookie-notice/notice.html', 'template' => '/plugins/cookie-notice/notice.html']);
 
 		Event::on('Vvveb\Controller\Base', 'init-menu', __CLASS__, function ($menu) use ($admin_path, $url) {
 			$menu['plugins']['items']['cookie-notice'] = [

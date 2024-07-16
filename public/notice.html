@@ -1,7 +1,6 @@
 <html>
 	<head>
 		 <link id="landing-css" href="../../themes/landing/css/style.css" rel="stylesheet">
-		 <script src="../../js/jquery.min.js"></script>
 		 <script src="../../js/bootstrap.min.js"></script>
 	</head>
 <body>
@@ -34,13 +33,13 @@
 	
 <!-- #cookie-notice-js code will be inserted in the theme pages by plugin common.tpl -->	
 <script id="cookie-notice-js">
-let notice = $("#cookie-notice .toast");
+let notice = document.querySelector("#cookie-notice .toast");
 if (localStorage) {
 
 	let cookie = localStorage.getItem("cookie-notice", "unset");
 
-	if (!cookie && notice.length) {
-		notice.addClass("show");
+	if (!cookie && notice) {
+		notice.classList.add("show");
 	}
 }
 
@@ -55,19 +54,14 @@ function isEditor () {
 	return document.getElementById("vvvebjs-styles") || window.location.href.includes('r=');
 }
 
-$(function() {
-	if (isEditor()) {
-		//if editor always show notice and don't hide on button click
-		$("#cookie-notice .toast").on("hide.bs.toast", function (e) {
-			e.stopPropagation();
-			return false;
-		});
-		notice.addClass("show");
-	}
-});
+if (isEditor() && notice) {
+	//if editor always show notice and don't hide on button click
+	notice.addEventListener("hide.bs.toast", function (e) {
+		e.preventDefault();
+		return false;
+	});
+	notice.classList.add("show");
+}
 </script>		
 </body>	
 </html>
-
-
-			
