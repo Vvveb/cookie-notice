@@ -1,7 +1,7 @@
 <html>
 	<head>
-		 <link id="landing-css" href="../../themes/landing/css/style.css" rel="stylesheet">
-		 <script src="../../js/bootstrap.min.js"></script>
+		 <link id="landing-css" href="/themes/landing/css/style.css" rel="stylesheet">
+		 <script src="/js/bootstrap.min.js"></script>
 	</head>
 <body>
 	
@@ -9,14 +9,14 @@
 	
 	<div id="cookie-notice">
 
-		<div class="fixed-bottom p-4">
+		<div class="fixed-bottom p-4" style="left: auto;">
 			
 			<div class="toast bg-opacity-50 float-end" role="alert" data-autohide="false">
 					<div class="toast-body p-4 d-flex flex-column">
 						<h4>Cookie Notice</h4>
-						<p>This website stores data such as cookies to enable site functionality including analytics and personalization.</p>
-						<p>By using this website, you automatically accept that we use cookies.</p> 
-						<p>Check our <a href="/page/privacy-policy">privacy policy</a></p>
+						<p class="mb-3">This website stores data such as cookies to enable site functionality including analytics and personalization.</p>
+						<p class="mb-3">By using this website, you automatically accept that we use cookies.</p> 
+						<p class="mb-3">Check our <a href="/page/privacy-policy">privacy policy</a></p>
 						<div class="ms-auto">
 							<button type="button" class="btn btn-outline-secondary me-3" id="btnDeny" data-bs-dismiss="toast" onclick="setCookieConsent('deny')">
 								Deny
@@ -44,7 +44,9 @@ if (localStorage) {
 }
 
 function setCookieConsent(value) {
-	return localStorage.setItem('cookie-notice', value);
+	localStorage.setItem('cookie-notice', value);
+	notice.classList.remove("show");
+	return true;
 }
 </script>		
 
